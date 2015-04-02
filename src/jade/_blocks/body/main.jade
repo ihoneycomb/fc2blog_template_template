@@ -1,0 +1,42 @@
+main
+  //- ここがリストの繰り返し部分
+  // topentry
+  p <%topentry_title>
+  article.entry
+    header
+      h2
+      p Comment: <%topentry_comment_num> Trackback: <%topentry_tb_num>
+    section.content
+      <%topentry_body>
+    // more_link
+    p.entry_more
+      a(href='<%topentry_link>#more') 続きを読む
+    // /more_link
+    // more
+    section.content_more
+      <%topentry_more>
+    // /more
+    footer
+      // topentry_tag
+      p
+        Tag: <%topentry_jointtag>, Category: <%topentry_category>
+      // /topentry_tag
+    section.comment_area
+      // /comment_area
+      // comment
+      section.comment
+        p <%comment_body>
+      // /comment
+      form.comment_form(method="post",action="./",name="comment_form")
+        input(type="hidden",name="mode",value="regist")
+        input(type="hidden",name="comment[no]",value="<%pno>")
+        input.comment_name(type="text",name="comment[name]",value="<%cookie_name>")
+        input.comment_mail(type="text",name="comment[mail]",value="<%cookie_mail>")
+        input.comment_title(type="text",name="comment[title]")
+        textarea.commdnt_body(name="comment[body]") comment
+        input.comment_url(type="text",name="comment[url]",value="<%cookie_url>")
+        input.comment_password(type="password",name="comment[pass]")
+        input.comment_himitu(type="checkbox", name="comment[himitu]")
+        input.comment_submit(type="submit",value="send")
+      // /comment_area
+  // /topentry
